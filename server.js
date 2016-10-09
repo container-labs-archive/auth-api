@@ -6,10 +6,11 @@ const app = express();
 app.set('superSecret', config.secret);
 
 function getConnectionString() {
-  const MONGO_IP = process.env.MONGO_PORT_27017_TCP_ADDR;
-  const MONGO_PORT = process.env.MONGO_PORT_27017_TCP_PORT;
+  const mongoIp = process.env.MONGO_PORT_27017_TCP_ADDR;
+  const mongoPort = process.env.MONGO_PORT_27017_TCP_PORT;
+  const database = process.env.DATABASE_NAME;
 
-  let connectionString = `mongodb://${MONGO_IP}:${MONGO_PORT}/development`;
+  let connectionString = `mongodb://${mongoIp}:${mongoPort}/${database}`;
   if (process.env.IS_PRODUCTION) {
     connectionString = process.env.MONGO_CONNECTION_STRING;
   }

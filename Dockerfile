@@ -16,6 +16,7 @@ RUN npm install --progress=false
 COPY . /app/
 
 ENV SERVER_PORT 8080
+ENV DATABASE_NAME development
 EXPOSE 8080
 
 CMD ["npm", "start"]
