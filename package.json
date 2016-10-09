@@ -1,0 +1,27 @@
+{
+  "name": "auth-api",
+  "main": "server.js",
+  "description": "jwt based auth api for mongo",
+  "license": "MIT",
+  "repository": "https://github.com/container-labs/auth-api",
+  "private": false,
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "jsonwebtoken": "^5.5.4",
+    "mongoose": "4.4.7",
+    "mongoose-acl": "~0.2.3",
+    "morgan": "^1.6.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.3.0"
+  }
+}

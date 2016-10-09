@@ -1,0 +1,10 @@
+auth:
+  build: ./
+  links:
+    - mongo
+  ports:
+    - 9090:8080
+
+mongo:
+  image: "mvertes/alpine-mongo:3.2.3"
+  command: mongod --smallfiles
