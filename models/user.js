@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const acl = require('mongoose-acl');
 const bcrypt = require('bcrypt');
 
 const Schema = mongoose.Schema;
@@ -16,9 +15,7 @@ const UserSchema = new Schema({
   lockUntil: { type: Number },
 });
 
-UserSchema.plugin(acl.subject);
-
-UserSchema.pre('save', (next) => {
+UserSchema.pre('save', function saveIt(next) {
   const user = this;
 
   // only hash the password if it has been modified (or is new)
@@ -38,7 +35,7 @@ UserSchema.pre('save', (next) => {
   });
 });
 
-UserSchema.methods.comparePassword = (candidatePassword, cb) => {
+UserSchema.methods.comparePassword = function compare(candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
     if (err) return cb(err);
 
