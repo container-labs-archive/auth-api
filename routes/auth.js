@@ -23,7 +23,7 @@ auth.get('/setup', (req, res) => {
     if (err) throw err;
 
     if (user) {
-      return res.send({ message: 'user already exists' });
+      return res.status(409).json({ message: 'user already exists' });
     }
 
     const admin = new User({
@@ -46,9 +46,9 @@ auth.post('/', (req, res) => {
     if (err) throw err;
 
     if (!user) {
-      return res.status(403).send({
+      return res.status(403).json({
         success: false,
-        message: 'Authentication failed. User not found.',
+        message: 'Authentication failed. Username and password do not match.',
       });
     }
 
@@ -67,9 +67,9 @@ auth.post('/', (req, res) => {
         });
       }
 
-      return res.status(403).send({
+      return res.status(403).json({
         success: false,
-        message: 'Authentication failed. Password does not match.',
+        message: 'Authentication failed. Username and password do not match.',
       });
     });
   });
