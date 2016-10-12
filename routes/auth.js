@@ -52,17 +52,24 @@ auth.post('/', (req, res) => {
       });
     }
 
-    return user.comparePassword(req.body.password, (compareErr) => {
+    return user.comparePassword(req.body.password, (compareErr, isMatch) => {
       if (compareErr) throw compareErr;
 
-      const token = jwt.sign(user, req.app.get('superSecret'), {
-        expiresIn: 86400, // 24 hours
-      });
+      if (isMatch) {
+        const token = jwt.sign(user, req.app.get('superSecret'), {
+          expiresIn: 86400, // 24 hours
+        });
 
-      return res.json({
-        success: true,
-        message: 'Enjoy your token!',
-        token,
+        return res.json({
+          success: true,
+          message: 'Enjoy your token!',
+          token,
+        });
+      }
+
+      return res.status(403).send({
+        success: false,
+        message: 'Authentication failed. Password does not match.',
       });
     });
   });
