@@ -35,6 +35,6 @@ app.use('/auth', require('./routes/auth'));
 // Start the server
 const SERVER_PORT = process.env.SERVER_PORT;
 app.listen(SERVER_PORT, () => {
-  console.log(`Example app listening at port: ${SERVER_PORT}`);
+  console.log(`app listening at port: ${SERVER_PORT}`);
 });
 module.exports.server = app;
