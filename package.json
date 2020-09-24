@@ -10,7 +10,7 @@
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "jsonwebtoken": "^5.5.4",
-    "mongoose": "4.4.7",
+    "mongoose": "5.10.6",
     "morgan": "^1.6.1"
   },
   "scripts": {
